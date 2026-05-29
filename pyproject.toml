@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage="https://github.com/GeeeekExplorer/nano-vllm"
+Homepage="https://github.com/dstampfli/nano-vllm"
 
 # flash-attn 2.8.3 has no prebuilt wheel for torch 2.12/CUDA 13 and won't compile
 # from source against CUDA 13 on glibc 2.41+. Pin torch to 2.9 (CUDA 12) and pull

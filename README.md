@@ -19,7 +19,7 @@ A lightweight vLLM implementation built from scratch.
 ## Installation
 
 ```bash
-pip install git+https://github.com/GeeeekExplorer/nano-vllm.git
+pip install git+https://github.com/dstampfli/nano-vllm.git
 ```
 
 ## Model Download
@@ -63,4 +63,4 @@ See `bench.py` for benchmark.
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=GeeeekExplorer/nano-vllm&type=Date)](https://www.star-history.com/#GeeeekExplorer/nano-vllm&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=dstampfli/nano-vllm&type=Date)](https://www.star-history.com/#dstampfli/nano-vllm&Date)
