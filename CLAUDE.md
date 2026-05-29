@@ -8,7 +8,7 @@ Nano-vLLM is a from-scratch reimplementation of vLLM in ~1,200 lines of Python. 
 
 ## Running
 
-The package only runs on a CUDA host with `flash-attn` installed; there is no test suite. Validate changes by running the bundled scripts against a downloaded Qwen3 checkpoint:
+The package only runs on a CUDA host with `flash-attn` installed; there is no test suite. Set up the environment with `uv sync` — `pyproject.toml` pins `torch>=2.9,<2.10` and pulls a matching prebuilt flash-attn wheel via `[tool.uv.sources]`, so nothing compiles (flash-attn won't build against CUDA 13 / glibc 2.41+). Then validate changes by running the bundled scripts against a downloaded Qwen3 checkpoint:
 
 ```bash
 python example.py   # smoke test — short generation against ~/huggingface/Qwen3-0.6B/
@@ -16,6 +16,8 @@ python bench.py     # throughput benchmark — 256 random sequences, prints tok/
 ```
 
 Both scripts hardcode `~/huggingface/Qwen3-0.6B/` as the model path. `example.py` uses `enforce_eager=True` (skips CUDA graph capture, faster startup); `bench.py` uses CUDA graphs for realistic throughput numbers. To test tensor parallelism, pass `tensor_parallel_size=N` to `LLM(...)`.
+
+No local GPU? `colab_demo.ipynb` runs the same example/benchmark on a Colab GPU (needs Ampere or newer — compute capability ≥ 8.0; the free-tier T4 won't work). It pins torch to 2.9 and fetches a matching prebuilt flash-attn wheel, mirroring the `uv` setup.
 
 ## Architecture
 

@@ -2,13 +2,11 @@
 <img width="300" src="assets/logo.png">
 </p>
 
-<p align="center">
-<a href="https://trendshift.io/repositories/15323" target="_blank"><img src="https://trendshift.io/api/badge/repositories/15323" alt="GeeeekExplorer%2Fnano-vllm | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
-</p>
-
 # Nano-vLLM
 
 A lightweight vLLM implementation built from scratch.
+
+> Fork of [GeeeekExplorer/nano-vllm](https://github.com/GeeeekExplorer/nano-vllm) — adds a `uv`-based setup (pinned torch + a prebuilt flash-attn wheel so `uv sync` works without compiling) and a [Google Colab demo](colab_demo.ipynb) for running on a Colab GPU with no local CUDA host.
 
 ## Key Features
 
@@ -18,17 +16,27 @@ A lightweight vLLM implementation built from scratch.
 
 ## Installation
 
+Clone the repo and use `uv` (recommended — pulls the pinned torch and a prebuilt flash-attn wheel, so nothing compiles):
+```bash
+git clone https://github.com/dstampfli/nano-vllm.git
+cd nano-vllm
+uv sync
+```
+
+Or install directly with pip:
 ```bash
 pip install git+https://github.com/dstampfli/nano-vllm.git
 ```
+
+## Run on Google Colab
+
+No local GPU? Open [`colab_demo.ipynb`](colab_demo.ipynb) in Google Colab and run it on an Ampere-or-newer GPU (L4/A100). FlashAttention needs compute capability ≥ 8.0, so the free-tier T4 won't work.
 
 ## Model Download
 
 To download the model weights manually, use the following command:
 ```bash
-huggingface-cli download --resume-download Qwen/Qwen3-0.6B \
-  --local-dir ~/huggingface/Qwen3-0.6B/ \
-  --local-dir-use-symlinks False
+hf download Qwen/Qwen3-0.6B --local-dir ~/huggingface/Qwen3-0.6B/
 ```
 
 ## Quick Start
